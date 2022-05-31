@@ -4,7 +4,7 @@
 </h1>
 
 <h1 align="center">
-  <img src="src/assets/images/logo/gif todo.gif" />
+  <img width="500" height="600" src="src/assets/images/logo/gif todo.gif" />
 </h1>
 
 ## About 📃
