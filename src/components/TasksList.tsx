@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, Image, TouchableOpacity, View, Text, StyleSheet, FlatListProps } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -19,9 +19,10 @@ interface TasksListProps {
 }
 
 export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps) {
+  
   return (
     <FlatList
-      // data={tasks}
+      data={tasks}
       keyExtractor={item => String(item.id)}
       contentContainerStyle={{ paddingBottom: 24 }}
       showsVerticalScrollIndicator={false}
@@ -34,12 +35,14 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
                 activeOpacity={0.7}
                 style={styles.taskButton}
                 //TODO - use onPress (toggle task) prop
+                onPress={() => toggleTaskDone(item.id)}
               >
                 <View 
                   testID={`marker-${index}`}
                   //TODO - use style prop 
+                  style={ item.done === true ? styles.taskMarkerDone : styles.taskMarker}
                 >
-                  { item.done && (
+                  {item.done && (
                     <Icon 
                       name="check"
                       size={12}
@@ -50,6 +53,7 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
 
                 <Text 
                   //TODO - use style prop
+                  style={[item.done === true ? styles.taskTextDone : styles.taskText]}
                 >
                   {item.title}
                 </Text>
@@ -60,6 +64,7 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
               testID={`trash-${index}`}
               style={{ paddingHorizontal: 24 }}
               //TODO - use onPress (remove task) prop
+              onPress={() => removeTask(item.id)}
             >
               <Image source={trashIcon} />
             </TouchableOpacity>
@@ -110,5 +115,5 @@ const styles = StyleSheet.create({
     color: '#1DB863',
     textDecorationLine: 'line-through',
     fontFamily: 'Inter-Medium'
-  }
+  },
 })
