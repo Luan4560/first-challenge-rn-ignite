@@ -17,7 +17,7 @@ It is as really simple project as todo list to se the ecosystem of react native.
 ## Techs 💻
 
 - [React Native](https://reactnative.dev/docs/getting-started:)
-- [Typescript](s://www.typescriptlang.org/docs/)
+- [Typescript](https://www.typescriptlang.org/docs/)
 
 --- 
 
